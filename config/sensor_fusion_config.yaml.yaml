@@ -1,0 +1,17 @@
+ultrasonic_sensors:
+  fr_mid_us_frame:
+    topic: /fr_mid_range
+    angle: 0
+  fr_left_us_frame:
+    topic: /fr_left_range
+    angle: 15
+  fr_right_us_frame:
+    topic: /fr_right_range
+    angle: -15
+  bc_mid_us_frame:
+    topic: /bc_mid_range
+    angle: 180
+
+lidar:
+  topic: /scan
+  output_topic: /scan/fused
