@@ -5,12 +5,10 @@ from geometry_msgs.msg import PoseStamped
 from nav2_msgs.action import NavigateToPose
 
 class Nav2GoalSender(Node):
-    def __init__(self):
+    def __init__(self, goals):
         super().__init__('nav2_goal_sender')
         self._action_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
-        self.declare_parameter('goals', [])
-        raw_goals = self.get_parameter('goals').value
-        self.goals = [tuple(raw_goals[i:i+7]) for i in range(0, len(raw_goals), 7)]
+        self.goals = goals
         self.current_goal_index = 0
 
     def send_next_goal(self):
@@ -56,7 +54,15 @@ class Nav2GoalSender(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    goal_sender = Nav2GoalSender()
+    
+    # List of goals: (x, y, z, qx, qy, qz, qw)
+    goals = [
+        (5.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0),
+        (7.9, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0),
+        (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0)
+    ]
+    
+    goal_sender = Nav2GoalSender(goals)
     goal_sender.send_next_goal()
     rclpy.spin(goal_sender)
 
