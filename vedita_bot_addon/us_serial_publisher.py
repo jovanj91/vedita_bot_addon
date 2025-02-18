@@ -9,7 +9,7 @@ class UltrasonicSensorNode(Node):
 
         # Declare and get parameters
         self.declare_parameter('serial_port', '/dev/ttyUSB0')
-        self.declare_parameter('baud_rate', 115200)
+        self.declare_parameter('baud_rate', 9600)
 
         serial_port = self.get_parameter('serial_port').value
         baud_rate = self.get_parameter('baud_rate').value
