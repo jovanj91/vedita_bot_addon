@@ -23,6 +23,8 @@ setup(
             'us_serial_publisher = vedita_bot_addon.us_serial_publisher:main',
             'sensor_fusion = vedita_bot_addon.sensor_fusion:main',
             'send_goal = vedita_bot_addon.send_goal:main',
+            'person_follower_hc = vedita_bot_addon.person_follower_hc:main',
+            'person_follower_yolo = vedita_bot_addon.person_follower_yolo:main',
         ],
     },
 )
